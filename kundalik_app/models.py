@@ -57,7 +57,6 @@ class Grade(models.Model):
     mark = models.IntegerField(max_length=5)
 
 
-
 class Attendance(models.Model):
     student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
     subject_id = models.ForeignKey(Subject, on_delete=models.CASCADE)
