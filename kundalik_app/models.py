@@ -50,11 +50,12 @@ class Teacher(Person):
 
 
 class Grade(models.Model):
+    # grade_name = models.CharField(max_length=100)
     student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
     teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     subject_id = models.ForeignKey(Subject, on_delete=models.CASCADE)
     created_at = models.DateField(default=datetime.now)
-    mark = models.IntegerField(max_length=5)
+    mark = models.IntegerField()
 
 
 class Attendance(models.Model):
