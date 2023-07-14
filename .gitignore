@@ -6,7 +6,7 @@ __pycache__
 db.sqlite3
 media
 staticfiles
-venv1
+venv2
 main.py
 # Backup files #
 *.bak

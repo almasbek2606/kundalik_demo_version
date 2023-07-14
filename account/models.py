@@ -2,9 +2,18 @@ from django.db import models
 from datetime import datetime
 
 from django.db.models import CharField
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    ROLE_CHOICES = (
+        ('a','Admin'),
+        ('s','Student'),
+        ('t','Teacher'),
+        ('p','Parent')
+    )
+    roles = models.CharField(max_length=1,choices=ROLE_CHOICES)
 
 
-# Create your models here.
 class PersonModel(models.Model):
     name = models.CharField(max_length=100, default='')
     fullname = models.CharField(max_length=100, default='')
