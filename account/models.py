@@ -4,14 +4,15 @@ from datetime import datetime
 from django.db.models import CharField
 from django.contrib.auth.models import AbstractUser
 
+
 class CustomUser(AbstractUser):
     ROLE_CHOICES = (
-        ('a','Admin'),
-        ('s','Student'),
-        ('t','Teacher'),
-        ('p','Parent')
+        ('a', 'Admin'),
+        ('s', 'Student'),
+        ('t', 'Teacher'),
+        ('p', 'Parent')
     )
-    roles = models.CharField(max_length=1,choices=ROLE_CHOICES)
+    roles = models.CharField(max_length=1, choices=ROLE_CHOICES)
 
 
 class PersonModel(models.Model):
@@ -19,6 +20,7 @@ class PersonModel(models.Model):
     fullname = models.CharField(max_length=100, default='')
     date_of_birth = models.DateField(default=datetime.now)
     address = models.TextField()
+    # user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None, null=True)
 
     def __str__(self) -> CharField:
         return self.name
@@ -39,7 +41,7 @@ class ParentsModel(PersonModel):
 
 
 class StudentModel(PersonModel):
-    # from school.models import SchoolModel,ClassModel
+    from school.models import SchoolModel, ClassModel
     school = models.ForeignKey('school.SchoolModel', on_delete=models.CASCADE)
     var_class = models.ForeignKey('school.ClassModel', on_delete=models.SET_NULL, null=True)
     parents = models.ForeignKey(ParentsModel, default='', on_delete=models.SET_NULL, null=True)

@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    path('api/kundalik/', include('kundalik_app.urls'))
+    path('admin/', admin.site.urls),
+    path('api/kundalik/', include('kundalik_app.urls')),
+    path('v1/api/account/', include('account.urls')),
+    path('v1/api/school/', include('school.urls')),
+    path('v1/api/statistic/', include('statistic.urls'))
 ]

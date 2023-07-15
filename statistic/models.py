@@ -15,7 +15,7 @@ class SubjectModel(models.Model):
 
 
 class AttendanceModel(models.Model):
-    # from account.models import StudentModel,TeacherModel
+    from account.models import StudentModel, TeacherModel
     student = models.ForeignKey('account.StudentModel', on_delete=models.CASCADE)
     subject = models.ForeignKey(SubjectModel, on_delete=models.SET_NULL, null=True)
     teacher = models.ForeignKey('account.TeacherModel', on_delete=models.SET_NULL, null=True)
@@ -29,7 +29,7 @@ class AttendanceModel(models.Model):
 
 
 class GradeModel(models.Model):
-    # from account.models import StudentModel,TeacherModel
+    from account.models import StudentModel,TeacherModel
     student = models.ForeignKey('account.StudentModel', on_delete=models.CASCADE)
     subject = models.ForeignKey(SubjectModel, on_delete=models.SET_NULL, null=True)
     teacher = models.ForeignKey('account.TeacherModel', on_delete=models.SET_NULL, null=True)
